@@ -3,69 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#ecebe6">
+<meta name="theme-color" content="#fff3d6">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon.svg">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap">
 <title>Aziz Bena Music</title>
 <style>
-  /* Direction : flyer techno brutaliste. Papier gris clair, encre noire, un seul bloc violet, texte mono, une seule page qui défile. */
-  :root{color-scheme:light;--paper:#ecebe6;--ink:#0b0b0f;--violet:#7c3cff;--line:#0b0b0f;--mute:#5d5b66;
+  /* Direction : flyer de fête. Papier crème, encre indigo, aplats violet / rose / jaune / menthe, ombres décalées, formes rondes qui flottent. */
+  :root{color-scheme:light;--paper:#fff3d6;--ink:#1a1033;--violet:#7c3cff;--pink:#ff4fa3;--sun:#ffd23f;--mint:#2ee6a8;--mute:#5f5478;
         --display:'Archivo Black','Arial Black',Impact,sans-serif;--mono:'Space Mono',ui-monospace,Menlo,monospace}
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-padding-top:56px}
-  body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 var(--mono)}
+  html{scroll-behavior:smooth;scroll-padding-top:70px}
+  body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 var(--mono);overflow-x:hidden}
   a{color:inherit}
-  /* barre d'ancres */
-  nav{position:sticky;top:0;z-index:5;display:flex;gap:0;overflow-x:auto;background:var(--ink);padding-top:env(safe-area-inset-top,0px);scrollbar-width:none}
-  nav a{flex:none;padding:16px 18px;color:#fff;text-decoration:none;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
-  nav a:first-child{background:var(--violet)}
+  /* barre d'ancres : pastilles colorées */
+  nav{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow-x:auto;background:var(--paper);padding:12px 14px;padding-top:calc(12px + env(safe-area-inset-top,0px));border-bottom:2px solid var(--ink);scrollbar-width:none}
+  nav a{flex:none;padding:8px 14px;border:2px solid var(--ink);border-radius:999px;text-decoration:none;font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;box-shadow:2px 2px 0 var(--ink)}
+  nav a:nth-child(1){background:var(--violet);color:#fff} nav a:nth-child(2){background:var(--sun)} nav a:nth-child(3){background:var(--pink);color:#fff}
+  nav a:nth-child(4){background:var(--mint)} nav a:nth-child(5){background:var(--violet);color:#fff} nav a:nth-child(6){background:var(--sun)}
   /* hero */
-  .hero{padding:44px 18px 28px}
-  .hero small{display:block;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
-  h1{margin:10px 0 18px;font:400 clamp(4rem,23vw,9rem)/.82 var(--display);letter-spacing:-.04em;text-transform:uppercase}
-  h1 span{display:block;-webkit-text-stroke:2px var(--ink);color:transparent}
-  .hero p{max-width:34ch;margin:0 0 20px}
-  .btn{display:inline-block;padding:14px 20px;border:2px solid var(--ink);background:var(--ink);color:#fff;font:700 .8rem var(--mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
-  .btn.alt{background:none;color:var(--ink)}
-  .btn.v{background:var(--violet);border-color:var(--violet)}
-  .marq{overflow:hidden;white-space:nowrap;background:var(--violet);color:#fff;border-block:2px solid var(--ink);padding:10px 0;font:400 1.1rem var(--display);text-transform:uppercase}
+  .hero{position:relative;padding:40px 18px 34px;overflow:hidden}
+  .hero small{display:inline-block;padding:6px 12px;border:2px solid var(--ink);border-radius:999px;background:var(--mint);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;transform:rotate(-2deg)}
+  h1{position:relative;z-index:1;margin:16px 0 18px;font:400 clamp(4rem,23vw,9rem)/.86 var(--display);letter-spacing:-.03em;text-transform:uppercase}
+  h1 .a{display:block;color:var(--violet);text-shadow:4px 4px 0 var(--ink)}
+  h1 .b{display:block;color:var(--sun);-webkit-text-stroke:3px var(--ink);text-shadow:5px 5px 0 var(--pink);transform:rotate(-2deg);transform-origin:left}
+  .hero p{position:relative;z-index:1;max-width:34ch;margin:0 0 22px}
+  .blob{position:absolute;border-radius:50%;border:3px solid var(--ink);animation:float 5s ease-in-out infinite}
+  .blob.p{width:120px;height:120px;right:-30px;top:60px;background:var(--pink)}
+  .blob.m{width:70px;height:70px;right:70px;top:210px;background:var(--mint);animation-delay:-2s}
+  .blob.s{width:44px;height:44px;right:24px;top:300px;background:var(--sun);animation-delay:-3.5s}
+  @keyframes float{50%{transform:translateY(-14px) rotate(12deg)}}
+  .btn{display:inline-block;padding:13px 22px;border:2px solid var(--ink);border-radius:999px;background:var(--violet);color:#fff;font:700 .8rem var(--mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;box-shadow:4px 4px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+  .btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+  .btn.alt{background:var(--sun);color:var(--ink)} .btn.m{background:var(--mint);color:var(--ink)}
+  .marq{overflow:hidden;white-space:nowrap;background:var(--pink);color:var(--ink);border-block:3px solid var(--ink);padding:10px 0;font:400 1.15rem var(--display);text-transform:uppercase;transform:rotate(-1.5deg);margin:0 -10px}
   .marq div{display:inline-block;animation:slide 22s linear infinite}
   @keyframes slide{to{transform:translateX(-50%)}}
   /* sections */
-  section{padding:48px 18px 8px}
-  h2{display:flex;align-items:baseline;gap:12px;margin:0 0 18px;font:400 2.2rem/1 var(--display);letter-spacing:-.02em;text-transform:uppercase}
-  h2 em{font:700 .8rem var(--mono);color:var(--violet);letter-spacing:.1em}
-  /* dates : liste façon tracklist */
-  .row{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:16px 0;border-top:2px solid var(--line);text-decoration:none}
-  .row:last-child{border-bottom:2px solid var(--line)}
-  .row .d{font:400 1.9rem/.95 var(--display)}
-  .row .d small{display:block;font:700 .7rem var(--mono);letter-spacing:.1em;color:var(--violet);text-transform:uppercase}
-  .row h3{margin:0;font:400 1.15rem/1.1 var(--display);text-transform:uppercase}
+  section{padding:52px 18px 8px}
+  h2{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:0 0 18px;font:400 2.2rem/1 var(--display);letter-spacing:-.02em;text-transform:uppercase}
+  h2 em{font:700 .72rem var(--mono);padding:5px 10px;border:2px solid var(--ink);border-radius:999px;background:var(--mint);letter-spacing:.08em;font-style:normal}
+  /* dates : cartes colorées */
+  #events{display:grid;gap:14px}
+  .row{display:grid;grid-template-columns:70px 1fr auto;gap:14px;align-items:center;padding:14px;border:2px solid var(--ink);border-radius:20px;background:#fff;text-decoration:none;box-shadow:5px 5px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+  .row:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+  .row .d{display:grid;place-items:center;aspect-ratio:1;border:2px solid var(--ink);border-radius:16px;background:var(--mint);font:400 1.9rem/.95 var(--display);text-align:center}
+  .row:nth-child(2) .d{background:var(--pink);color:#fff} .row:nth-child(3) .d{background:var(--sun)}
+  .row .d small{display:block;font:700 .7rem var(--mono);letter-spacing:.1em;text-transform:uppercase}
+  .row h3{margin:0;font:400 1.1rem/1.1 var(--display);text-transform:uppercase}
   .row p{margin:4px 0 0;color:var(--mute);font-size:.8rem}
-  .row .go{font:700 1.6rem var(--mono)}
-  .row.first{background:var(--ink);color:#fff;padding-inline:14px;margin-inline:-14px;border-color:var(--ink)}
-  .row.first .d small,.row.first .go{color:#b99aff} .row.first p{color:#c9c6d2}
+  .row .go{display:grid;place-items:center;width:38px;height:38px;border:2px solid var(--ink);border-radius:50%;background:var(--ink);color:#fff;font:700 1.1rem var(--mono)}
+  .row.first{background:var(--sun)} .row.first p{color:var(--ink)} .row.first .d{background:var(--violet);color:#fff}
   /* vidéos : défilement horizontal */
-  .rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-18px;padding-inline:18px;padding-bottom:10px}
+  .rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-18px;padding:4px 18px 16px}
   .rail .tile{flex:0 0 72%;max-width:320px;scroll-snap-align:start}
-  .tile img,.tile video{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border:2px solid var(--ink);background:var(--ink)}
-  .tile p{margin:8px 0 0;font-size:.8rem}
-  /* actus : grille serrée */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+  .tile img,.tile video{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border:2px solid var(--ink);border-radius:20px;background:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+  .tile p{margin:12px 0 0;font-size:.8rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
   .grid .tile img{aspect-ratio:1}
+  .grid .tile:nth-child(odd) img{transform:rotate(-1.5deg)} .grid .tile:nth-child(even) img{transform:rotate(1.5deg)}
   /* musique */
-  .music{margin:48px 0 0;padding:36px 18px 40px;background:var(--ink);color:#fff}
-  .music h2{color:#fff} .music p{max-width:34ch}
-  .vinyl{width:150px;height:150px;margin:6px 0 22px;border-radius:50%;background:radial-gradient(circle,var(--violet) 0 17%,#000 18% 20%,#1a1a22 21% 100%);
-         box-shadow:inset 0 0 0 10px #101016,inset 0 0 0 11px #2a2a34,inset 0 0 0 26px #101016,inset 0 0 0 27px #2a2a34;animation:spin 8s linear infinite}
+  .music{position:relative;margin:56px 0 0;padding:40px 18px 44px;background:var(--violet);color:#fff;border-block:3px solid var(--ink);overflow:hidden}
+  .music h2 em{color:var(--ink)} .music p{max-width:34ch}
+  .vinyl{width:150px;height:150px;margin:6px 0 22px;border-radius:50%;border:3px solid var(--ink);background:radial-gradient(circle,var(--sun) 0 17%,var(--ink) 18% 20%,#2a1b55 21% 100%);
+         box-shadow:inset 0 0 0 10px var(--ink),inset 0 0 0 11px #4b3a86,inset 0 0 0 26px var(--ink),inset 0 0 0 27px #4b3a86;animation:spin 8s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
-  .music .btn{background:#fff;color:var(--ink);border-color:#fff}
-  footer{padding:36px 18px calc(36px + env(safe-area-inset-bottom,0px));border-top:2px solid var(--ink);margin-top:0}
-  footer .btn{margin:6px 8px 0 0}
+  footer{padding:44px 18px calc(44px + env(safe-area-inset-bottom,0px))}
+  footer .btn{margin:8px 10px 0 0}
   #status{margin:0;padding:8px 18px 0;color:var(--mute);font-size:.75rem}
-  a:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
-  @media (prefers-reduced-motion:reduce){.marq div,.vinyl{animation:none}}
+  a:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
+  @media (prefers-reduced-motion:reduce){.marq div,.vinyl,.blob{animation:none}}
 </style>
 </head>
 <body>
@@ -73,9 +80,10 @@
 
 <header class="hero" id="top">
   <small>Producer · DJ · Bordeaux</small>
-  <h1>Aziz<span>Bena</span></h1>
-  <p>Techno, sets live et productions. Retrouve les prochaines dates, les vidéos et les sorties.</p>
-  <a class="btn v" href="#dates">Prochaines dates ↓</a>
+  <span class="blob p"></span><span class="blob m"></span><span class="blob s"></span>
+  <h1><span class="a">Aziz</span><span class="b">Bena</span></h1>
+  <p>Techno, sets live et bonnes ondes ! Viens voir les prochaines dates, les vidéos et les sorties.</p>
+  <a class="btn" href="#dates">Les prochaines dates ↓</a>
 </header>
 <div class="marq" aria-hidden="true"><div id="marq"></div></div>
 <p id="status"></p>
@@ -88,7 +96,7 @@
   <h2>Musique <em style="color:#b99aff">/ spotify</em></h2>
   <div class="vinyl" role="img" aria-label="Disque vinyle"></div>
   <p>Tracks, sets et dernières sorties à écouter.</p>
-  <a class="btn" id="spotify" href="#" target="_blank" rel="noopener">Ouvrir Spotify →</a>
+  <a class="btn m" id="spotify" href="#" target="_blank" rel="noopener">Ouvrir Spotify →</a>
 </div>
 
 <footer id="booking">
@@ -106,7 +114,7 @@ const fmt = d => new Date(d).toLocaleDateString('fr-FR', {day:'numeric', month:'
 
 // Visuels de démo générés en local (aucun réseau requis)
 const art = (i, label) => 'data:image/svg+xml,' + encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><rect width="400" height="500" fill="${['#0b0b0f','#7c3cff','#1d1340'][i % 3]}"/><circle cx="200" cy="230" r="${60 + i * 12}" fill="none" stroke="#fff" stroke-width="3" opacity=".5"/><text x="200" y="440" font-size="34" fill="#fff" text-anchor="middle" font-family="Arial Black,Impact,sans-serif">${label.toUpperCase()}</text></svg>`);
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><rect width="400" height="500" fill="${['#7c3cff','#ff4fa3','#2ee6a8'][i % 3]}"/><circle cx="200" cy="230" r="${60 + i * 12}" fill="none" stroke="#1a1033" stroke-width="6" opacity=".6"/><text x="200" y="440" font-size="34" fill="#1a1033" text-anchor="middle" font-family="Arial Black,Impact,sans-serif">${label.toUpperCase()}</text></svg>`);
 const DEMO_POSTS = ['Aftermovie', 'Studio', 'Live set', 'Teaser', 'Tomorrowland', 'Night life'].map((l, i) => ({
   media_type: i % 3 === 0 ? 'VIDEO' : 'IMAGE', media_url: i % 3 === 0 ? '' : art(i, l), thumbnail_url: art(i, '▶ ' + l),
   caption: `${l} — exemple de publication`, permalink: 'https://www.instagram.com/azizbena_music_/',
@@ -117,7 +125,7 @@ async function load() {
   const c = await (await fetch('club.json', {cache: 'no-store'})).json();
   document.title = c.name;
   $('spotify').href = c.music_url;
-  $('marq').textContent = ('AZIZ BENA MUSIC ✦ TECHNO ✦ LIVE ✦ '.repeat(8));
+  $('marq').textContent = ('AZIZ BENA MUSIC ★ TECHNO ★ GOOD VIBES ★ '.repeat(8));
 
   const today = new Date().toISOString().slice(0, 10);
   const events = c.events.filter(e => e.date >= today).sort((a, b) => a.date.localeCompare(b.date));
