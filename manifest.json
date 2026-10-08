@@ -3,7 +3,7 @@
   "short_name": "Aziz Bena",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0c0709",
-  "theme_color": "#0c0709",
+  "background_color": "#ecebe6",
+  "theme_color": "#ecebe6",
   "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
 }
