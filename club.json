@@ -1,0 +1,11 @@
+{
+  "name": "Aziz Bena Music",
+  "color": "#7c3cff",
+  "instagram_token": "",
+  "music_url": "https://open.spotify.com/search/Aziz%20Bena",
+  "events": [
+    { "date": "2026-10-24", "title": "Club Night (exemple)", "artists": ["Hangar · Bordeaux", "Set 2h"], "ticket": "https://blackaccordmusic.com" },
+    { "date": "2026-11-14", "title": "Techno Session (exemple)", "artists": ["Paris", "Set 90 min"], "ticket": "https://blackaccordmusic.com" },
+    { "date": "2026-12-31", "title": "Réveillon (exemple)", "artists": ["Lieu à confirmer"], "ticket": "https://blackaccordmusic.com" }
+  ]
+}
