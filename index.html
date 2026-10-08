@@ -3,138 +3,163 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#fff3d6">
+<meta name="theme-color" content="#0a0a0d">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon.svg">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700&display=swap">
 <title>Aziz Bena Music</title>
 <style>
-  /* Direction : flyer de fête. Papier crème, encre indigo, aplats violet / rose / jaune / menthe, ombres décalées, formes rondes qui flottent. */
-  :root{color-scheme:light;--paper:#fff3d6;--ink:#1a1033;--violet:#7c3cff;--pink:#ff4fa3;--sun:#ffd23f;--mint:#2ee6a8;--mute:#5f5478;
-        --display:'Archivo Black','Arial Black',Impact,sans-serif;--mono:'Space Mono',ui-monospace,Menlo,monospace}
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-padding-top:70px}
-  body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 var(--mono);overflow-x:hidden}
-  a{color:inherit}
-  /* barre d'ancres : pastilles colorées */
-  nav{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow-x:auto;background:var(--paper);padding:12px 14px;padding-top:calc(12px + env(safe-area-inset-top,0px));border-bottom:2px solid var(--ink);scrollbar-width:none}
-  nav a{flex:none;padding:8px 14px;border:2px solid var(--ink);border-radius:999px;text-decoration:none;font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;box-shadow:2px 2px 0 var(--ink)}
-  nav a:nth-child(1){background:var(--violet);color:#fff} nav a:nth-child(2){background:var(--sun)} nav a:nth-child(3){background:var(--pink);color:#fff}
-  nav a:nth-child(4){background:var(--mint)} nav a:nth-child(5){background:var(--violet);color:#fff} nav a:nth-child(6){background:var(--sun)}
-  /* hero */
-  .hero{position:relative;padding:40px 18px 34px;overflow:hidden}
-  .hero small{display:inline-block;padding:6px 12px;border:2px solid var(--ink);border-radius:999px;background:var(--mint);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;transform:rotate(-2deg)}
-  h1{position:relative;z-index:1;margin:16px 0 18px;font:400 clamp(4rem,23vw,9rem)/.86 var(--display);letter-spacing:-.03em;text-transform:uppercase}
-  h1 .a{display:block;color:var(--violet);text-shadow:4px 4px 0 var(--ink)}
-  h1 .b{display:block;color:var(--sun);-webkit-text-stroke:3px var(--ink);text-shadow:5px 5px 0 var(--pink);transform:rotate(-2deg);transform-origin:left}
-  .hero p{position:relative;z-index:1;max-width:34ch;margin:0 0 22px}
-  .blob{position:absolute;border-radius:50%;border:3px solid var(--ink);animation:float 5s ease-in-out infinite}
-  .blob.p{width:120px;height:120px;right:-30px;top:60px;background:var(--pink)}
-  .blob.m{width:70px;height:70px;right:70px;top:210px;background:var(--mint);animation-delay:-2s}
-  .blob.s{width:44px;height:44px;right:24px;top:300px;background:var(--sun);animation-delay:-3.5s}
-  @keyframes float{50%{transform:translateY(-14px) rotate(12deg)}}
-  .btn{display:inline-block;padding:13px 22px;border:2px solid var(--ink);border-radius:999px;background:var(--violet);color:#fff;font:700 .8rem var(--mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;box-shadow:4px 4px 0 var(--ink);transition:transform .12s,box-shadow .12s}
-  .btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
-  .btn.alt{background:var(--sun);color:var(--ink)} .btn.m{background:var(--mint);color:var(--ink)}
-  .marq{overflow:hidden;white-space:nowrap;background:var(--pink);color:var(--ink);border-block:3px solid var(--ink);padding:10px 0;font:400 1.15rem var(--display);text-transform:uppercase;transform:rotate(-1.5deg);margin:0 -10px}
-  .marq div{display:inline-block;animation:slide 22s linear infinite}
-  @keyframes slide{to{transform:translateX(-50%)}}
-  /* sections */
-  section{padding:52px 18px 8px}
-  h2{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:0 0 18px;font:400 2.2rem/1 var(--display);letter-spacing:-.02em;text-transform:uppercase}
-  h2 em{font:700 .72rem var(--mono);padding:5px 10px;border:2px solid var(--ink);border-radius:999px;background:var(--mint);letter-spacing:.08em;font-style:normal}
-  /* dates : cartes colorées */
-  #events{display:grid;gap:14px}
-  .row{display:grid;grid-template-columns:70px 1fr auto;gap:14px;align-items:center;padding:14px;border:2px solid var(--ink);border-radius:20px;background:#fff;text-decoration:none;box-shadow:5px 5px 0 var(--ink);transition:transform .12s,box-shadow .12s}
-  .row:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
-  .row .d{display:grid;place-items:center;aspect-ratio:1;border:2px solid var(--ink);border-radius:16px;background:var(--mint);font:400 1.9rem/.95 var(--display);text-align:center}
-  .row:nth-child(2) .d{background:var(--pink);color:#fff} .row:nth-child(3) .d{background:var(--sun)}
-  .row .d small{display:block;font:700 .7rem var(--mono);letter-spacing:.1em;text-transform:uppercase}
-  .row h3{margin:0;font:400 1.1rem/1.1 var(--display);text-transform:uppercase}
-  .row p{margin:4px 0 0;color:var(--mute);font-size:.8rem}
-  .row .go{display:grid;place-items:center;width:38px;height:38px;border:2px solid var(--ink);border-radius:50%;background:var(--ink);color:#fff;font:700 1.1rem var(--mono)}
-  .row.first{background:var(--sun)} .row.first p{color:var(--ink)} .row.first .d{background:var(--violet);color:#fff}
-  /* vidéos : défilement horizontal */
-  .rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-18px;padding:4px 18px 16px}
-  .rail .tile{flex:0 0 72%;max-width:320px;scroll-snap-align:start}
-  .tile img,.tile video{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border:2px solid var(--ink);border-radius:20px;background:var(--ink);box-shadow:5px 5px 0 var(--ink)}
-  .tile p{margin:12px 0 0;font-size:.8rem}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
-  .grid .tile img{aspect-ratio:1}
-  .grid .tile:nth-child(odd) img{transform:rotate(-1.5deg)} .grid .tile:nth-child(even) img{transform:rotate(1.5deg)}
+  /* Direction : application d'artiste sobre. Graphite, texte clair, un seul violet doux, filets fins, grands titres Syne, listes groupées façon iOS. */
+  :root{color-scheme:dark;--bg:#0a0a0d;--surface:#131318;--surface2:#1a1a21;--line:rgba(255,255,255,.08);--fg:#f1f1f4;--mute:#8d8d99;--accent:#a58bff;--accent-ink:#120c2a;
+        --display:'Syne','Manrope',sans-serif;--body:'Manrope',system-ui,sans-serif;--gutter:20px}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 var(--body);overflow:hidden}
+  a{color:inherit;text-decoration:none}
+  /* barre du haut */
+  .top{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:calc(10px + env(safe-area-inset-top,0px)) var(--gutter) 10px;
+       background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px;font:700 .95rem var(--display);letter-spacing:.02em}
+  .brand i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font:700 .72rem var(--display);font-style:normal}
+  .ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .top a.ig{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--line)}
+  /* écrans */
+  main{height:100%;overflow-y:auto;padding:calc(64px + env(safe-area-inset-top,0px)) 0 calc(96px + env(safe-area-inset-bottom,0px));-webkit-overflow-scrolling:touch}
+  .screen{display:none;padding:0 var(--gutter);max-width:640px;margin:0 auto}
+  .screen.on{display:block;animation:in .28s ease both}
+  @keyframes in{from{opacity:0;transform:translateY(6px)}}
+  h1{margin:18px 0 4px;font:700 2rem/1.05 var(--display);letter-spacing:-.01em}
+  .sub{margin:0 0 20px;color:var(--mute)}
+  h2{margin:28px 0 12px;font:600 .75rem var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+  /* carte prochaine date */
+  .next{position:relative;overflow:hidden;padding:22px;border-radius:22px;border:1px solid var(--line);
+        background:radial-gradient(120% 90% at 100% 0%,rgba(165,139,255,.28),transparent 60%),var(--surface)}
+  .next .lbl{font:600 .7rem var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .next .when{display:flex;align-items:baseline;gap:10px;margin:14px 0 4px;font-family:var(--display)}
+  .next .when b{font-size:3.6rem;line-height:.9}
+  .next .when span{font-size:1.1rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
+  .next h3{margin:0;font:600 1.15rem var(--body)} .next p{margin:2px 0 18px;color:var(--mute)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:14px;background:var(--accent);color:var(--accent-ink);font:700 .9rem var(--body);border:0;cursor:pointer}
+  .btn.ghost{background:var(--surface2);color:var(--fg);border:1px solid var(--line)}
+  /* liste groupée */
+  .list{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .item{display:flex;align-items:center;gap:14px;padding:14px 16px}
+  .item + .item{border-top:1px solid var(--line)}
+  .item .chip{flex:none;width:52px;text-align:center;padding:6px 0;border-radius:12px;background:var(--surface2);font:700 1.25rem/1 var(--display)}
+  .item .chip small{display:block;margin-top:2px;font:600 .62rem var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+  .item .txt{flex:1;min-width:0} .item .txt b{display:block;font-weight:600} .item .txt span{display:block;color:var(--mute);font-size:.85rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .item .chev{flex:none;width:18px;height:18px;color:var(--mute)}
+  .item .lead{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:var(--surface2);color:var(--accent)}
+  /* médias */
+  .rail{display:flex;gap:12px;overflow-x:auto;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);scroll-snap-type:x mandatory;scrollbar-width:none}
+  .rail .tile{flex:0 0 62%;max-width:260px;scroll-snap-align:start}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .tile{position:relative;min-width:0}
+  .tile img,.tile video{width:100%;aspect-ratio:1;object-fit:cover;display:block;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+  .tile .play{position:absolute;right:10px;top:10px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(10,10,13,.6);backdrop-filter:blur(6px)}
+  .tile .play svg{width:14px;height:14px;fill:#fff}
+  .tile p{margin:8px 2px 0;font-size:.8rem;color:var(--mute);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   /* musique */
-  .music{position:relative;margin:56px 0 0;padding:40px 18px 44px;background:var(--violet);color:#fff;border-block:3px solid var(--ink);overflow:hidden}
-  .music h2 em{color:var(--ink)} .music p{max-width:34ch}
-  .vinyl{width:150px;height:150px;margin:6px 0 22px;border-radius:50%;border:3px solid var(--ink);background:radial-gradient(circle,var(--sun) 0 17%,var(--ink) 18% 20%,#2a1b55 21% 100%);
-         box-shadow:inset 0 0 0 10px var(--ink),inset 0 0 0 11px #4b3a86,inset 0 0 0 26px var(--ink),inset 0 0 0 27px #4b3a86;animation:spin 8s linear infinite}
+  .cover{display:grid;place-items:center;aspect-ratio:1;border-radius:26px;border:1px solid var(--line);margin-bottom:22px;
+         background:radial-gradient(circle at 30% 20%,#3a2a78,#14102a 55%,#0a0a0d)}
+  .vinyl{width:62%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--accent) 0 16%,#050507 17% 19%,#17171d 20% 100%);
+         box-shadow:inset 0 0 0 9px #0c0c10,inset 0 0 0 10px #2b2b35,inset 0 0 0 24px #0c0c10,inset 0 0 0 25px #2b2b35,0 24px 60px rgba(0,0,0,.6);animation:spin 14s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
-  footer{padding:44px 18px calc(44px + env(safe-area-inset-bottom,0px))}
-  footer .btn{margin:8px 10px 0 0}
-  #status{margin:0;padding:8px 18px 0;color:var(--mute);font-size:.75rem}
-  a:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
-  @media (prefers-reduced-motion:reduce){.marq div,.vinyl,.blob{animation:none}}
+  /* barre d'onglets */
+  .tabs{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));
+        background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--line)}
+  .tabs button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;background:none;border:0;color:var(--mute);font:600 .66rem var(--body);cursor:pointer}
+  .tabs button.on{color:var(--accent)}
+  button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+  #status{margin:12px 0 0;font-size:.75rem;color:var(--mute)}
+  @media (prefers-reduced-motion:reduce){.vinyl{animation:none}.screen.on{animation:none}}
 </style>
 </head>
 <body>
-<nav><a href="#top">Aziz Bena</a><a href="#dates">Dates</a><a href="#videos">Vidéos</a><a href="#actus">Actus</a><a href="#musique">Musique</a><a href="#booking">Booking</a></nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" stroke="none"/></symbol>
+</defs></svg>
 
-<header class="hero" id="top">
-  <small>Producer · DJ · Bordeaux</small>
-  <span class="blob p"></span><span class="blob m"></span><span class="blob s"></span>
-  <h1><span class="a">Aziz</span><span class="b">Bena</span></h1>
-  <p>Techno, sets live et bonnes ondes ! Viens voir les prochaines dates, les vidéos et les sorties.</p>
-  <a class="btn" href="#dates">Les prochaines dates ↓</a>
-</header>
-<div class="marq" aria-hidden="true"><div id="marq"></div></div>
-<p id="status"></p>
-
-<section id="dates"><h2>Dates <em>/ à venir</em></h2><div id="events"></div></section>
-<section id="videos"><h2>Vidéos <em>/ clips &amp; sets</em></h2><div class="rail" id="vrail"></div></section>
-<section id="actus"><h2>Actus <em>/ instagram</em></h2><div class="grid" id="news"></div></section>
-
-<div class="music" id="musique">
-  <h2>Musique <em style="color:#b99aff">/ spotify</em></h2>
-  <div class="vinyl" role="img" aria-label="Disque vinyle"></div>
-  <p>Tracks, sets et dernières sorties à écouter.</p>
-  <a class="btn m" id="spotify" href="#" target="_blank" rel="noopener">Ouvrir Spotify →</a>
+<div class="top">
+  <div class="brand"><i>AB</i>Aziz Bena</div>
+  <a class="ig" href="https://www.instagram.com/azizbena_music_/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6"/></svg></a>
 </div>
 
-<footer id="booking">
-  <h2 style="margin-bottom:10px">Booking</h2>
-  <p>Bookings, collaborations, releases : toutes les infos sont sur le site officiel.</p>
-  <a class="btn" href="https://blackaccordmusic.com" target="_blank" rel="noopener">Site officiel →</a>
-  <a class="btn alt" href="https://www.instagram.com/azizbena_music_/" target="_blank" rel="noopener">Instagram →</a>
-</footer>
+<main id="main">
+  <section class="screen on" id="home">
+    <h1>Aziz Bena</h1><p class="sub">Producer · DJ · Bordeaux</p>
+    <div id="next"></div>
+    <h2>Derniers médias</h2><div class="rail" id="hrail"></div>
+    <h2>À écouter</h2>
+    <div class="list"><a class="item" href="#" data-go="music"><span class="lead"><svg class="ico" viewBox="0 0 24 24"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg></span>
+      <span class="txt"><b>Musique</b><span>Tracks, sets et dernières sorties</span></span><svg class="chev ico"><use href="#i-chev"/></svg></a></div>
+    <p id="status"></p>
+  </section>
+
+  <section class="screen" id="dates"><h1>Dates</h1><p class="sub">Les prochains rendez-vous</p><div class="list" id="events"></div></section>
+  <section class="screen" id="media"><h1>Médias</h1><p class="sub">Vidéos et photos récentes</p><div class="grid" id="news"></div></section>
+
+  <section class="screen" id="music"><h1>Musique</h1><p class="sub">Écoute les derniers morceaux</p>
+    <div class="cover"><div class="vinyl" role="img" aria-label="Disque vinyle"></div></div>
+    <a class="btn" id="spotify" href="#" target="_blank" rel="noopener" style="width:100%">Ouvrir dans Spotify</a></section>
+
+  <section class="screen" id="contact"><h1>Contact</h1><p class="sub">Booking, collaborations et sorties</p>
+    <div class="list">
+      <a class="item" href="https://blackaccordmusic.com" target="_blank" rel="noopener"><span class="lead"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="txt"><b>Site officiel</b><span>blackaccordmusic.com</span></span><svg class="chev ico"><use href="#i-chev"/></svg></a>
+      <a class="item" href="https://www.instagram.com/azizbena_music_/" target="_blank" rel="noopener"><span class="lead"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></span><span class="txt"><b>Instagram</b><span>@azizbena_music_</span></span><svg class="chev ico"><use href="#i-chev"/></svg></a>
+    </div></section>
+</main>
+
+<nav class="tabs" id="tabs">
+  <button data-t="home" class="on"><svg class="ico" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg>Accueil</button>
+  <button data-t="dates"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Dates</button>
+  <button data-t="media"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>Médias</button>
+  <button data-t="music"><svg class="ico" viewBox="0 0 24 24"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg>Musique</button>
+  <button data-t="contact"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Contact</button>
+</nav>
 
 <script>
 const REFRESH_MS = 5 * 60 * 1000; // mise à jour automatique
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const fmt = d => new Date(d).toLocaleDateString('fr-FR', {day:'numeric', month:'long'});
+const chev = '<svg class="chev ico"><use href="#i-chev"/></svg>';
 
 // Visuels de démo générés en local (aucun réseau requis)
 const art = (i, label) => 'data:image/svg+xml,' + encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><rect width="400" height="500" fill="${['#7c3cff','#ff4fa3','#2ee6a8'][i % 3]}"/><circle cx="200" cy="230" r="${60 + i * 12}" fill="none" stroke="#1a1033" stroke-width="6" opacity=".6"/><text x="200" y="440" font-size="34" fill="#1a1033" text-anchor="middle" font-family="Arial Black,Impact,sans-serif">${label.toUpperCase()}</text></svg>`);
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${['#3a2a78','#241a4d','#17122e'][i % 3]}"/><stop offset="1" stop-color="#0a0a0d"/></linearGradient></defs><rect width="400" height="400" fill="url(#g)"/><circle cx="200" cy="180" r="${50 + i * 10}" fill="none" stroke="#a58bff" stroke-width="1.5" opacity=".6"/><text x="200" y="350" font-size="22" letter-spacing="4" fill="#f1f1f4" text-anchor="middle" font-family="Helvetica,Arial,sans-serif">${label.toUpperCase()}</text></svg>`);
 const DEMO_POSTS = ['Aftermovie', 'Studio', 'Live set', 'Teaser', 'Tomorrowland', 'Night life'].map((l, i) => ({
-  media_type: i % 3 === 0 ? 'VIDEO' : 'IMAGE', media_url: i % 3 === 0 ? '' : art(i, l), thumbnail_url: art(i, '▶ ' + l),
+  media_type: i % 3 === 0 ? 'VIDEO' : 'IMAGE', media_url: i % 3 === 0 ? '' : art(i, l), thumbnail_url: art(i, l),
   caption: `${l} — exemple de publication`, permalink: 'https://www.instagram.com/azizbena_music_/',
   timestamp: new Date(Date.now() - i * 864e5).toISOString()
 }));
+
+function go(t) {
+  document.querySelectorAll('.screen').forEach(el => el.classList.toggle('on', el.id === t));
+  document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.t === t));
+  $('main').scrollTo(0, 0);
+}
+$('tabs').onclick = e => { const t = e.target.closest('button')?.dataset.t; if (t) go(t); };
+document.addEventListener('click', e => { const a = e.target.closest('[data-go]'); if (a) { e.preventDefault(); go(a.dataset.go); } });
 
 async function load() {
   const c = await (await fetch('club.json', {cache: 'no-store'})).json();
   document.title = c.name;
   $('spotify').href = c.music_url;
-  $('marq').textContent = ('AZIZ BENA MUSIC ★ TECHNO ★ GOOD VIBES ★ '.repeat(8));
 
   const today = new Date().toISOString().slice(0, 10);
   const events = c.events.filter(e => e.date >= today).sort((a, b) => a.date.localeCompare(b.date));
-  $('events').innerHTML = events.map((e, i) => {
-    const d = new Date(e.date + 'T12:00:00');
-    return `<a class="row${i === 0 ? ' first' : ''}" href="${esc(e.ticket)}" target="_blank" rel="noopener">
-      <div class="d">${d.getDate()}<small>${d.toLocaleDateString('fr-FR',{month:'short'})}</small></div>
-      <div><h3>${esc(e.title)}</h3><p>${esc(e.artists.join(' · '))}</p></div><span class="go">→</span></a>`;
-  }).join('') || '<p>Aucune date annoncée.</p>';
+  const parts = e => { const d = new Date(e.date + 'T12:00:00'); return {day: d.getDate(), mon: d.toLocaleDateString('fr-FR',{month:'short'}).replace('.',''), wd: d.toLocaleDateString('fr-FR',{weekday:'long'})}; };
+
+  const n = events[0];
+  $('next').innerHTML = n ? (p => `<div class="next"><div class="lbl">Prochaine date</div>
+    <div class="when"><b>${p.day}</b><span>${p.mon} · ${p.wd}</span></div>
+    <h3>${esc(n.title)}</h3><p>${esc(n.artists.join(' · '))}</p>
+    <a class="btn" href="${esc(n.ticket)}" target="_blank" rel="noopener">Infos et billets</a></div>`)(parts(n)) : '';
+  $('events').innerHTML = events.map(e => { const p = parts(e); return `<a class="item" href="${esc(e.ticket)}" target="_blank" rel="noopener">
+    <div class="chip">${p.day}<small>${p.mon}</small></div><div class="txt"><b>${esc(e.title)}</b><span>${esc(e.artists.join(' · '))}</span></div>${chev}</a>`; }).join('')
+    || '<div class="item"><div class="txt"><span>Aucune date annoncée.</span></div></div>';
 
   let posts = DEMO_POSTS;
   if (c.instagram_token) {
@@ -144,12 +169,11 @@ async function load() {
       posts = j.data;
     } catch (e) { $('status').textContent = 'Instagram : ' + e.message; }
   }
-  const tile = p => `<div class="tile">${p.media_type === 'VIDEO'
-      ? `<video src="${esc(p.media_url)}" poster="${esc(p.thumbnail_url)}" controls playsinline preload="none"></video>`
-      : `<a href="${esc(p.permalink)}" target="_blank" rel="noopener"><img src="${esc(p.media_url)}" loading="lazy" alt=""></a>`}
-    <p>${fmt(p.timestamp)} — ${esc((p.caption || '').slice(0, 70))}</p></div>`;
-  $('vrail').innerHTML = posts.filter(p => p.media_type === 'VIDEO').map(tile).join('') || '<p>Pas encore de vidéo.</p>';
-  $('news').innerHTML = posts.filter(p => p.media_type !== 'VIDEO').map(tile).join('');
+  const tile = p => { const v = p.media_type === 'VIDEO'; return `<a class="tile" href="${esc(p.permalink)}" target="_blank" rel="noopener">
+    <img src="${esc(v ? p.thumbnail_url : p.media_url)}" loading="lazy" alt="">${v ? '<span class="play"><svg viewBox="0 0 24 24"><use href="#i-play"/></svg></span>' : ''}
+    <p>${esc((p.caption || '').slice(0, 80))}</p></a>`; };
+  $('hrail').innerHTML = posts.slice(0, 4).map(tile).join('');
+  $('news').innerHTML = posts.map(tile).join('');
 }
 
 const refresh = () => load().catch(e => $('status').textContent = 'Erreur : ' + e.message);
